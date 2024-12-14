@@ -1,0 +1,10 @@
+<main>
+    <input name="searchTerm" type="text" placeholder="Filter Todos" [(ngModel)]="searchTerm"/>
+    <ul>
+        @for (todo of todos() | filterTodos: searchTerm(); track todo.id) {
+            <li>
+                <app-todo-item [todo]="todo" (updatedTodo)="updateTodoInTodos($event)"></app-todo-item>
+            </li>
+        }
+    </ul>
+</main>
