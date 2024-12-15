@@ -14,9 +14,10 @@ import { FilterTodosPipe } from '../../pipes/filter-todos.pipe';
   styleUrl: './todos.component.scss'
 })
 export class TodosComponent implements OnInit {
-  todosService = inject(TodosService);
   todos = signal<Todo[]>([]);
   searchTerm = signal('');
+
+  constructor(private readonly todosService: TodosService) { }
 
   ngOnInit(): void {
     this.todosService.getTodos()

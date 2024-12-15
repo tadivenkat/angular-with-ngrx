@@ -1,0 +1,9 @@
+<main>
+    <h2>Products</h2>
+    <div *ngFor="let product of products$ | async; let i = index">
+      <h3>{{ i + 1}}. {{ product.name }}</h3>
+      <button (click)="addToCart(i)"
+              [textContent]="product.addedToCart ? 'Added to Cart' : 'Add to Cart'">
+      </button>
+    </div>
+</main>
