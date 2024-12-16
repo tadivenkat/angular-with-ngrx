@@ -1,6 +1,6 @@
-# TestAngular
+# Angular With NGRX
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
+A complete Angular application with state management using NGRX
 
 ## Development server
 
