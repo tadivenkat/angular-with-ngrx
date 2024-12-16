@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Todo } from '../model/todo.type';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,12 +7,11 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class TodosService {
-  httpClient = inject(HttpClient);
  
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   getTodos() {
-    let url = 'https://jsonplaceholder.typicode.com/todos';
+    let url = 'api/todos';
     return this.httpClient.get<Todo[]>(url);
   }
 }

@@ -18,5 +18,11 @@ export const routes: Routes = [
         pathMatch: 'full',
         loadComponent: () => import('./components/product-list/product-list.component').then(m => m.ProductListComponent),
         title: 'Products'
+    },
+    {
+        path: 'bookmarks',
+        pathMatch: 'full',
+        loadComponent: () => import('./components/bookmarks/bookmarks.component').then(m => m.BookmarksComponent),
+        title: 'Bookmarks'
     }
 ];

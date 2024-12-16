@@ -1,0 +1,63 @@
+<h1>Bookmarker</h1>
+<input type="text" placeholder="Filter Bookmarks..."/>
+<p>{{ status$ | async }}</p>
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-success">
+                <h6>Bookmarks</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Url</th>
+                                    <th>Created</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let bookmark of bookmarks$ | async">
+                                    <td>{{ bookmark.id }}</td>
+                                    <td>{{ bookmark.name }}</td>
+                                    <td>{{ bookmark.url }}</td>
+                                    <td>{{ bookmark.created }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header bg-success">
+                New Bookmark
+            </div>
+            <div class="card-body">
+                <form [formGroup]="bookmarkForm">
+                    <div class="col-12">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" formControlName="name" id="name" name="name">
+                    </div>
+                    <div class="col-12">
+                        <label for="url" class="form-label">Url</label>
+                        <input type="text" class="form-control" formControlName="url" id="url" name="url">
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            <button type="button" class="btn btn-secondary">Reset</button>
+                        </div>
+                        <div class="col-6 text-center">
+                            <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

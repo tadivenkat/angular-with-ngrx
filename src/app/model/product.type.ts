@@ -1,5 +1,5 @@
 export type Product = {
-    name: string,
-    price: number,
-    addedToCart: boolean
+    name: string;
+    price: number;
+    addedToCart: boolean;
 }
