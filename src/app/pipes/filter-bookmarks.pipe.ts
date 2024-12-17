@@ -8,7 +8,9 @@ import { Bookmark } from '../model/bookmark.type';
 export class FilterBookmarksPipe implements PipeTransform {
 
   transform(bookmarks: Bookmark[], searchTerm: string): unknown {
-    return bookmarks.filter(bookmark => bookmark.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    return bookmarks.filter(bookmark => 
+      bookmark.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      bookmark.url.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   }
-
 }

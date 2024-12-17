@@ -1,5 +1,5 @@
 <h1>Bookmarker</h1>
-<input type="text" placeholder="Filter Bookmarks..."/>
+<input type="text" placeholder="Filter Bookmarks..." (keyup)="onSearch($event)"/>
 <p>{{ status$ | async }}</p>
 <div class="row">
     <div class="col-8">
@@ -17,6 +17,7 @@
                                     <th>Name</th>
                                     <th>Url</th>
                                     <th>Created</th>
+                                    <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -25,6 +26,10 @@
                                     <td>{{ bookmark.name }}</td>
                                     <td>{{ bookmark.url }}</td>
                                     <td>{{ bookmark.created }}</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-primary" (click)="onEdit(bookmark)">Edit</button>
+                                        <button type="button" class="btn btn-danger mx-2" (click)="bookmark.id && onDelete(bookmark.id)">Delete</button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -43,17 +48,35 @@
                     <div class="col-12">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control" formControlName="name" id="name" name="name">
+                        <div class="text-danger">
+                            @if (bookmarkForm.controls['name'].touched) {
+                                @if (bookmarkForm.controls['name'].invalid) {
+                                    @if (bookmarkForm.controls['name'].errors?.['required']) {
+                                        <span>Name is required</span>
+                                    }
+                                }
+                            }
+                        </div>
                     </div>
                     <div class="col-12">
                         <label for="url" class="form-label">Url</label>
                         <input type="text" class="form-control" formControlName="url" id="url" name="url">
+                        <div class="text-danger">
+                        @if (bookmarkForm.controls['url'].touched) {
+                            @if (bookmarkForm.controls['url'].invalid) {
+                                @if (bookmarkForm.controls['url'].errors?.['required']) {
+                                    <span>Url is required</span>
+                                }
+                            }
+                        }
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-6 text-center">
-                            <button type="button" class="btn btn-secondary">Reset</button>
+                            <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>
                         </div>
                         <div class="col-6 text-center">
-                            <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                            <button type="submit" class="btn btn-primary" [disabled]="bookmarkForm.invalid" (click)="onSave()">{{ isEditMode ? 'Update' : 'Save' }}</button>
                         </div>
                     </div>
                 </form>

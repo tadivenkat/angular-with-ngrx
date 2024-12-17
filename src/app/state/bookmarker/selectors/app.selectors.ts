@@ -9,3 +9,8 @@ export const selectStatus = createSelector(selectAppState, (state: AppState) => 
 export const selectAllBookmarks = createSelector(selectAppState, (state: AppState) => state.bookmarks);
 
 export const selectBookmarkById = (id: number) => createSelector(selectAllBookmarks, (bookmarks: Bookmark[]) => bookmarks.find(bookmark => bookmark.id === id));
+
+export const selectBookmarksBySearchTerm = (searchTerm: string) => createSelector(selectAllBookmarks, (bookmarks: Bookmark[]) => bookmarks.filter(bookmark => 
+    bookmark.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    bookmark.url.toLowerCase().includes(searchTerm.toLowerCase())
+));

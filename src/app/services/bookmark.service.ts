@@ -30,4 +30,8 @@ export class BookmarkService {
   public update(bookmark: Bookmark): Observable<Bookmark> {
     return this.http.put<Bookmark>(`api/bookmarks/${bookmark.id}`, bookmark);
   }
+
+  public delete(id: number): Observable<Bookmark> {
+    return this.http.delete<Bookmark>(`api/bookmarks/${id}`);
+  }
 }

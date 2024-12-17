@@ -9,5 +9,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  title = signal('First Angular App');
+  title = signal('Angular with NGRX');
 }
