@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 
 @Component({
     selector: 'app-counter',
@@ -8,8 +8,13 @@ import { Component, signal } from '@angular/core';
 })
 
 export class CounterComponent {
+  initialValue = input(0);
   counter = signal(0);
+  
 
+  ngOnInit() {
+    this.counter.update(value => this.initialValue());
+  }
   increment() {
     this.counter.update(value => value + 1);
   }
