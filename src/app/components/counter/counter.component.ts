@@ -1,11 +1,10 @@
 import { Component, signal } from '@angular/core';
 
 @Component({
-  selector: 'app-counter',
-  standalone: true,
-  imports: [],
-  templateUrl: './counter.component.html',
-  styleUrl: './counter.component.scss'
+    selector: 'app-counter',
+    imports: [],
+    templateUrl: './counter.component.html',
+    styleUrl: './counter.component.scss'
 })
 
 export class CounterComponent {

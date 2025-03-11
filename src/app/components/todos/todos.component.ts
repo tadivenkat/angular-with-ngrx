@@ -7,11 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { FilterTodosPipe } from '../../pipes/filter-todos.pipe';
 
 @Component({
-  selector: 'app-todos',
-  standalone: true,
-  imports: [TodoItemComponent, FormsModule, FilterTodosPipe],
-  templateUrl: './todos.component.html',
-  styleUrl: './todos.component.scss'
+    selector: 'app-todos',
+    imports: [TodoItemComponent, FormsModule, FilterTodosPipe],
+    templateUrl: './todos.component.html',
+    styleUrl: './todos.component.scss'
 })
 export class TodosComponent implements OnInit {
   todos = signal<Todo[]>([]);

@@ -11,11 +11,10 @@ import { selectAllBookmarks, selectBookmarksBySearchTerm, selectStatus } from '.
 import { status } from '../../enums/status.enum';
 
 @Component({
-  selector: 'app-bookmarks',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
-  templateUrl: './bookmarks.component.html',
-  styleUrl: './bookmarks.component.scss'
+    selector: 'app-bookmarks',
+    imports: [CommonModule, ReactiveFormsModule, FormsModule],
+    templateUrl: './bookmarks.component.html',
+    styleUrl: './bookmarks.component.scss'
 })
 export class BookmarksComponent implements OnInit {
   status$: Observable<status>;

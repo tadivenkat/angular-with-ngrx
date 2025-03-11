@@ -5,11 +5,10 @@ import { Store } from '../../store';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'app-product-list',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.scss'
+    selector: 'app-product-list',
+    imports: [CommonModule],
+    templateUrl: './product-list.component.html',
+    styleUrl: './product-list.component.scss'
 })
 export class ProductListComponent implements OnInit {
   public products$ : BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
